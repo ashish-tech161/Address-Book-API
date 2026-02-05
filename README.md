@@ -2,6 +2,10 @@
 
 A FastAPI-based REST API for managing addresses with geolocation support. Find nearby addresses using the Haversine formula for distance calculation.
 
+## Documentation
+
+For a detailed explanation of the project architecture, design decisions, and implementation strategy, please refer to the [Approach Document](docs/Address_Book_API_Approach_Document.pdf).
+
 ## Features
 
 - Create, update, and delete addresses
