@@ -15,12 +15,4 @@ def root():
         "redoc": "/redoc"
     }
 
-@router.get("/health", tags=["health"])
-def health_check():
-    """Health check endpoint"""
-    logger.debug("Health check requested")
-    return {
-        "status": "healthy",
-        "version": settings.VERSION,
-        "environment": settings.ENVIRONMENT
-    }
+

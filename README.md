@@ -207,24 +207,6 @@ curl "http://127.0.0.1:8000/api/v1/addresses/nearby?latitude=22.700&longitude=75
 ]
 ```
 
----
-
-### 7. Health Check
-
-**GET** `/health`
-
-```bash
-curl "http://127.0.0.1:8000/health"
-```
-
-**Response:**
-```json
-{
-  "status": "healthy",
-  "version": "1.0.0",
-  "environment": "development"
-}
-```
 
 ## Logging
 
