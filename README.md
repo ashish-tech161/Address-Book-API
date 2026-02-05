@@ -52,7 +52,7 @@ cp .env.example .env
 Start the development server:
 
 ```bash
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
 
 The API will be available at: **http://127.0.0.1:8000**
@@ -254,7 +254,6 @@ The application includes comprehensive logging:
 **Text Format (Development):**
 ```
 2024-01-15 10:30:45 | INFO     | app.api.v1.endpoints.addresses | add_address:28 | POST /api/v1/addresses - Creating address: Indore Office
-2024-01-15 10:30:45 | INFO     | app.crud | create_address:20 | Creating new address: Indore Office
 2024-01-15 10:30:45 | INFO     | app.core.middleware | dispatch:30 | Response: POST /api/v1/addresses - 201
 ```
 
@@ -286,25 +285,27 @@ Address_Book_API/
 ├── app/
 │   ├── __init__.py
 │   ├── main.py              # FastAPI application initialization
-│   ├── database.py          # SQLAlchemy database setup
-│   ├── models.py            # Database models
-│   ├── schemas.py           # Pydantic schemas for validation
-│   ├── crud.py              # Database CRUD operations
 │   ├── utils.py             # Utility functions (haversine, coordinate parsing)
-│   ├── dependencies.py      # FastAPI dependencies
 │   ├── api/
 │   │   └── v1/
 │   │       ├── api.py       # API v1 router
 │   │       └── endpoints/
 │   │           └── addresses.py  # Address endpoints
-│   └── core/
-│       ├── config.py        # Application configuration
-│       ├── logging.py       # Logging configuration
-│       └── middleware.py    # Custom middleware (request/response logging)
+│   ├── core/
+│   │   ├── config.py        # Application configuration
+│   │   ├── logging.py       # Logging configuration
+│   │   └── middleware.py    # Custom middleware (request/response logging)
+│   ├── db/
+│   │   ├── __init__.py      # Database session & engine exports
+│   │   └── database.py      # SQLAlchemy configuration
+│   ├── models/              # Database models
+│   ├── routers/             # API routes
+│   ├── schemas/             # Pydantic schemas
+│   └── services/            # Business logic (combined with data access)
 ├── tests/
 │   └── test_api.py          # Unit tests for API and utilities
+├── docs/                    # Documentation files
 ├── logs/                    # Log files (auto-created)
-├── main.py                  # Application entry point
 ├── requirements.txt         # Python dependencies
 ├── .env.example            # Environment variables template
 ├── .gitignore              # Git ignore rules

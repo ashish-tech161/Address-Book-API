@@ -5,7 +5,7 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from app.dependencies import get_db
+from app.db import get_db
 from app.schemas import AddressCreate, AddressUpdate, AddressResponse
 from app.services.address_service import AddressService
 from app.core.logging import get_logger

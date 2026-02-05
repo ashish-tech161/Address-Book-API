@@ -1,8 +1,9 @@
 """
 Database configuration and session management
 """
+from typing import Generator
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.orm import sessionmaker, declarative_base, Session
 from app.core.config import settings
 from app.core.logging import get_logger
 
@@ -22,3 +23,12 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 logger.info(f"Database engine created: {settings.DATABASE_URL}")
+
+
+def get_db() -> Generator[Session, None, None]:
+    """Database session dependency"""
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
